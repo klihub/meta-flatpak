@@ -104,8 +104,10 @@ gpg1_mkconfig () {
 # Generate GPG1 keys and keyring.
 gpg1_genkeys () {
     echo "* Generating GPG1 keys and keyring..."
+
     mkdir -p $GPG_HOME
     chmod og-rwx $GPG_HOME
+
     gpg --homedir=$GPG_HOME --batch --gen-key $GPG_CONFIG
     gpg --homedir=$GPG_HOME --import $GPG_BASE.sec
     gpg --homedir=$GPG_HOME --import $GPG_BASE.pub
@@ -121,23 +123,18 @@ gpg2_import () {
 #########################
 # main script
 
-echo "foo..."
-exit 0
-
-
 GPG_TYPE="DSA"
 GPG_LENGTH="2048"
 GPG_SUBTYPE="ELG-E"
 GPG_SUBLENGTH="2048"
-GPG_NAME="Repo Signing Key"
-GPG_MAIL="repo-signing@key"
-GPG_BASE="repo-key"
+GPG_NAME="IoT RefKit Signing Key"
+GPG_MAIL="iot-refkit@key"
+GPG_BASE="iot-refkit"
 GPG_HOME=".gpg.flatpak"
 
 set -e
 
 parse_command_line $*
-
 
 gpg1_mkconfig
 gpg1_genkeys
