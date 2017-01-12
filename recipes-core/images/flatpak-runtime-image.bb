@@ -1,4 +1,5 @@
 include ../meta/recipes-core/images/core-image-minimal.bb
+inherit flatpak-image
 
 SUMMARY = "Flatpak runtime image for the target device."
 
